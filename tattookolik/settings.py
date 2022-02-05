@@ -126,12 +126,20 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# For looking to static directory
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    # '/var/www/static/',
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # TODO: TODO Plugin Test
+# TODO: Multicursor çğren
+
 
 # * Apps:
 # Page
@@ -141,4 +149,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # user
 
 # * Nerede kaldık?
-# 2. oturum başında
+# 2. oturum 16:10
