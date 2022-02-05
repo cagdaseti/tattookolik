@@ -140,3 +140,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # article
 # user
 
+# * Nerede kaldık?
+# 2. oturum başında
