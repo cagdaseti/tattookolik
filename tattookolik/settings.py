@@ -149,4 +149,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # user
 
 # * Nerede kaldık?
-# 2. oturum 16:10
+# 3. oturum 00:00
