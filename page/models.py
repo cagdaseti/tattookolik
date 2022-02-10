@@ -1,4 +1,7 @@
+from random import choices
 from django.db import models
+
+DEFAULT_STATUS = "draft"
 
 STATUS = [
     # * sol taraf db yazan ismi, sağ taraf UI da görünün ismi
@@ -23,9 +26,31 @@ class Page(models.Model):
         blank=True,
         )
     status = models.CharField(
-        default="draft",
+        default=DEFAULT_STATUS,
         choices=STATUS,
         max_length=10,
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
+class Carousel(models.Model):
+    title = models.CharField(
+        max_length=200,
+        blank=True,
+        null=True,
+    )
+    status = models.CharField(
+        default = DEFAULT_STATUS,
+        choices = STATUS,
+        max_length = 10,
+    )
+    cover_image = models.ImageField(
+        upload_to='carousel',
+        null=True,
+        blank=True,
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
