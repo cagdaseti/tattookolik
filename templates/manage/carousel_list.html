@@ -4,8 +4,8 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-sm-12 ">
-            <a href="{% url 'carousel_create' %}">Carousel - Create</a>
-            <hr>
+            {% comment %} <a href="{% url 'carousel_create' %}">Carousel - Create</a>
+            <hr> {% endcomment %}
             <table class="table">
                 <thead>
                     <tr>
@@ -16,25 +16,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                {% for item in carousel %}
-                    <tr>
-                    <th scope="row">{{ item.pk }} </th>
-                    <td>{{ item.title }}</td>
-                    <td>
-                        {% if item.cover_image %}
-                            <img src="{{ item.cover_image.url }}" class="w-100">
-                        {% else %}
-                            Gorsel Yok
-                        {% endif %}
-                    </td>
-                    <td>
-                        <a href="{% url 'carousel_update' item.pk %}" class="btn btn-primary">Edit</a>
-                    </td>
-                    </tr>
-                {% endfor %}
+                    {% for item in carousel %}
+                        <tr>
+                        <th scope="row">{{ item.pk }} </th>
+                        <td>{{ item.title }}</td>
+                        <td>
+                            {% if item.cover_image %}
+                                <img src="{{ item.cover_image.url }}" class="w-25">
+                            {% else %}
+                                Gorsel Yok
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="" class="btn btn-primary">Edit</a>
+                            {% comment %} <a href="{% url 'carousel_update' item.pk %}" class="btn btn-primary">Edit</a> {% endcomment %}
+                        </td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
-
         </div>
     </div>
 </div>

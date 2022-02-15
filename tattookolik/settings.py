@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Third Party Apps:
-
+    'django_extensions',
+    'rest_framework',
     # My Apps:
     'article',
     'cart',
@@ -125,15 +126,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'staticfiles/'
 
 # For looking to static directory
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    BASE_DIR / "static",
 ]
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -143,7 +145,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 """
 # TODO: TODO Plugin Test
-# TODO: Multicursor öğren
+# TODO: add => templates/manage/carousel_create.html
+# TODO: 1 - Multicursor öğren
+# TODO: 2 - Modelde query nasıl yapılır?
+# TODO: 3 - urls / views / models yapılarının ayrılışı
+# TODO: 4 - template costimize ve diğer genel özellikleri
+# TODO: 5 - API
+# TODO: 6 - Forms
+
 
 # * Apps:
 Page
@@ -168,5 +177,8 @@ order
 
 
 # * Nerede kaldık?
-5. oturum 07:37
+Hakan Yalçınkaya - django - 9. oturum 25:42
+sadık turan - django - 9. bölüm 06:34
+alper akbaş - restframework - 1-2 bölüm 15:18
 """
+
