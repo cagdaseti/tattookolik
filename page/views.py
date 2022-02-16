@@ -7,21 +7,23 @@ from .forms import CarouselModelForm
 
 def index(request):
     context = dict()
-    context['images'] = Carousel.objects.filter(status="published")
+    context['images'] = Carousel.objects.filter(
+        status="published").exclude(cover_image='')
     # context['images'] = images
     return render(request,"home/index.html",context)
 
 
 def carousel_list(request):
     context = dict()
-    context['carousel'] = Carousel.objects.all()
+    context['carousel'] = Carousel.objects.all().order_by("-pk")
     return render(request, 'manage/carousel_list.html', context )
 
 
 def carousel_update(request, pk):
     context = dict()
-    context['item'] = Carousel.objects.get(pk=pk)
-    return render(request, 'manage/carousel_update.html', context )
+    item = Carousel.objects.get(pk=pk)
+    context['form'] = CarouselModelForm(instance=item)
+    return render(request, 'manage/carousel_form.html', context )
 
 
 # stuff not checked
@@ -41,4 +43,4 @@ def carousel_create(request):
         if form.is_valid:
             form.save()
         messages.success(request,'Resim eklendi...')
-    return render(request,'manage/carousel_create.html',context)
+    return render(request,'manage/carousel_form.html',context)

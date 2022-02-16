@@ -28,8 +28,7 @@
                             {% endif %}
                         </td>
                         <td>
-                            <a href="" class="btn btn-primary">Edit</a>
-                            {% comment %} <a href="{% url 'carousel_update' item.pk %}" class="btn btn-primary">Edit</a> {% endcomment %}
+                            <a href="{% url 'carousel_update' item.pk %}" class="btn btn-primary">Edit</a>
                         </td>
                         </tr>
                     {% endfor %}
