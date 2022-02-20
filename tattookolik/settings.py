@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+    # Third Party Apps:
+    'bootstrap5',
+    'rest_framework',
+    'django_cleanup.apps.CleanupConfig',
     # My Apps:
     'article',
     'cart',
@@ -49,9 +52,8 @@ INSTALLED_APPS = [
 
 if os.environ.get('DJANGO_DEBUG') == 'True':
     INSTALLED_APPS += [
-        # Third Party Apps:
+        # MyTools:
         'django_extensions',
-        'rest_framework',
     ]
 
 MIDDLEWARE = [
@@ -146,28 +148,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-"""
-TODO: Apps:
-Page
-Paroduct
-Cart
-article
-user
-
-
-TODO: Yönetici:
--carousel
-page
-product
-category
-order
-
-TODO: Kullanıcı:
-register
-address
-credit card
-order
-"""
 
