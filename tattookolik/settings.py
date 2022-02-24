@@ -32,16 +32,24 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Third Party Admin Panel:
+    'admin_interface',
+    'colorfield',
+    # Django Origins
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    # Bootstrap
+    'bootstrap5',
+    # Django Statics
     'django.contrib.staticfiles',
     # Third Party Apps:
-    'bootstrap5',
     'rest_framework',
     'django_cleanup.apps.CleanupConfig',
+    'django_extensions',
+    "ckeditor",
     # My Apps:
     'article',
     'cart',
@@ -53,8 +61,10 @@ INSTALLED_APPS = [
 if os.environ.get('DJANGO_DEBUG') == 'True':
     INSTALLED_APPS += [
         # MyTools:
-        'django_extensions',
     ]
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+SILENCED_SYSTEM_CHECKS = ['security.W019']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -123,7 +133,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'tr-europe'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Istanbul'
 
 USE_I18N = True
 
@@ -133,13 +143,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'staticfiles/'
+STATIC_URL = 'mystatic/'
 
 # For looking to static directory
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / "mystatic",
 ]
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = BASE_DIR / "static"
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -148,4 +158,18 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+CKEDITOR_CONFIGS = {
+    "default": {
+        "removePlugins": "stylesheetparser",
+        "allowedContent": True,
+        "width": "100%",
+        "height": "450px",
+        'skin': 'moono',
+        # "toolbarCanCollapse" : True
+    }
+}
 
