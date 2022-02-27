@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+{% block content %}
+    <h3>Kontrol Paneli</h3>
+    <hr>
+    <p>
+        Hoşgeldiniz, <small>{{ request.user.username }}</small>
+    </p>
+    <hr>
+    <a href="/articles/article/add" class="btn btn-dark">Makale Ekle</a>
+    <hr>
+    {% if articles %}
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr class="table-dark">
+                    <th scope="col" style="text-align: center;">ID</th>
+                    <th scope="col" style="width: 50%; text-align: center;">Başlık</th>
+                    <th scope="col" style="text-align: center;">Yazar</th>
+                    <th scope="col" style="text-align: center;">Tarih</th>
+                    <th scope="col" style="text-align: center;">Güncelle</th>
+                    <th scope="col" style="text-align: center;">Sil</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for article in articles %}
+                    <tr class="table-light">
+                        <th scope="row" style="text-align: center;">{{ article.id }}</th>
+                        <td><a style="text-decoration: none; color: black;" href="/articles/article-detail/{{article.id}}">{{ article.title }}</a></td>
+                        <td>{{ article.author.username }}</td>
+                        <td style="text-align: center; width: 15%;">{{ article.createdDate }}</td>
+                        <td style="text-align: center;"><a href="/articles/article/update/{{article.id}}" class="btn btn-warning">Güncelle</a></td>
+                        <td style="text-align: center;"><a href="/articles/article/delete/{{article.id}}" class="btn btn-danger">Sil</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-danger">
+            Henüz bir makaleniz bulunmamaktadır!...
+        </div>
+    {% endif %}
+{% endblock content %}

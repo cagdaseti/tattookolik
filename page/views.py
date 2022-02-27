@@ -1,9 +1,10 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib import messages
 from django.utils.text import slugify
 from .models import Carousel,Page
 from .forms import CarouselModelForm,PageModelForm
 from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -14,6 +15,11 @@ def index(request):
         status="published").exclude(cover_image='')
     # context['images'] = images
     return render(request,"home/index.html",context)
+
+
+def about(request):
+    return render(request, "home/about.html")
+
 
 
 # Admin
@@ -39,7 +45,6 @@ def carousel_list(request):
 
 
 # update
-# stuff not checked
 @staff_member_required
 def carousel_update(request, pk):
     context = dict()

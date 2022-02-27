@@ -16,6 +16,9 @@ from .views import (
     )
 
 
+app_name = "page"
+
+
 urlpatterns = [
     # manage:
     path('', manage_list, name='manage_list'), 
