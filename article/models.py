@@ -14,7 +14,7 @@ class Article(models.Model):
         auto_now_add=True, 
         verbose_name="Oluşturulma Tarihi"
         )
-    article_image = models.FileField(
+    article_image = models.ImageField(
         upload_to='article', 
         blank=True, 
         null=True, 
